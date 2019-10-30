@@ -1,5 +1,6 @@
 package db;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.test.AbstractPersistenceTest;
@@ -20,12 +21,17 @@ import static org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers.getEntit
 
 public class PruebasPersistenciaTest extends AbstractPersistenceTest implements WithGlobalEntityManager {
 	
+	@BeforeEach
+	public void ejecutarQueryAlAzar(){
+		// Creamos querys cualquiera para la creacion del em y esas cosas no perjudique los tiempos
+		tiempoDeQuery("from IngenieroST", IngenieroST.class);
+		tiempoDeQuery("from IngenieroJT", IngenieroJT.class);
+		tiempoDeQuery("from IngenieroTPC", IngenieroTPC.class);
+		tiempoDeQuery("from PowerRangerMSC", PowerRangerMSC.class);
+	}
+	
 	@Test
 	public void compararLosTiemposDeAccesoPolimorfico() {
-		// Creamos una query cualquiera para la creacion del em y esas cosas no perjudique los tiempos
-		tiempoDeQuery("from PersonaST ", PersonaST.class);
-		
-		
 		System.out.println(
 				String.format("Single table tardo: %dms%n" +
 								"Joined table tardo: %dms%n" +
@@ -37,9 +43,6 @@ public class PruebasPersistenciaTest extends AbstractPersistenceTest implements 
 	
 	@Test
 	public void comprarLosTiemposDeAccesoPorClaseConcreta() {
-		// Creamos una query cualquiera para la creacion del em y esas cosas no perjudique los tiempos
-		tiempoDeQuery("from PersonaST ", PersonaST.class);
-		
 		System.out.println(
 				String.format("Single table tardo: %dms%n" +
 								"Joined table tardo: %dms%n" +
@@ -56,6 +59,7 @@ public class PruebasPersistenciaTest extends AbstractPersistenceTest implements 
 	}
 	
 	private long tiempoDeQuery(String query, Class classs) {
+		getEntityManager().clear();
 		long start = System.currentTimeMillis();
 		List list = getEntityManager().createQuery(query, classs).getResultList();
 		return System.currentTimeMillis() - start;
