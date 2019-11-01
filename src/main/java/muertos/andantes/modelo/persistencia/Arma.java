@@ -11,7 +11,9 @@ public class Arma {
 	@Id @GeneratedValue
 	long id;
 	
-	int municiones;
+	@Embedded
+	Municion municion;
+	
 	int calibre;
 	boolean esRuidosa;
 }
