@@ -5,7 +5,7 @@ import static org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers.getEntit
 public class CargarBaseDeDatos {
 	
 	public static void main(String args[]) {
-		int loops = 150;
+		int loops = 300;
 		GeneradorDeObjetos.generarPersonasST(loops).forEach(CargarBaseDeDatos::persistObjects);
 		GeneradorDeObjetos.generarPersonasJT(loops).forEach(CargarBaseDeDatos::persistObjects);
 		GeneradorDeObjetos.generarPersonasTPC(loops).forEach(CargarBaseDeDatos::persistObjects);
