@@ -19,6 +19,7 @@ public class Sobreviviente {
 	int resistencia;
 	
 	@OneToMany
+	@JoinColumn(name = "Sobreviviente_id")
 	List<Arma> armas;
 	
 	@Enumerated

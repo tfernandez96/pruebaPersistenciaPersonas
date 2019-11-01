@@ -13,10 +13,9 @@ public class Grupo {
 	
 	@Id @GeneratedValue long id;
 	
-	@Cascade(CascadeType.PERSIST)
 	@OneToOne // Un wachin solo puede pertenecer a un grupo
 	Sobreviviente lider;
-	@Cascade(CascadeType.PERSIST)
+	@JoinColumn(name = "Grupo_id")
 	@OneToMany // Lo mismo que arriba
 	List<Sobreviviente> sobrevivientes;
 	String nombre;

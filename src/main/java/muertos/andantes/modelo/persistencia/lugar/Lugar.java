@@ -15,9 +15,11 @@ public abstract class Lugar {
 	long id;
 	
 	@OneToMany // Cada caminante solo esta en un lugar
+	@JoinColumn(name = "lugar_id")
 	List<Caminante> caminantes;
-//	@OneToMany // Cada grupo solo esta en un lugar
-//	List<Grupo> grupos;
+	@OneToMany // Cada grupo solo esta en un lugar
+	@JoinColumn(name = "lugar_id")
+	List<Grupo> grupos;
 	// Dice que existen lugares caoticos con mas de un grupo por lo que hay 2 opciones:
 	// 1) Tener Lucar (Grupo: grupo) y LugarCaotico (List<Grupo> grupos)
 	// 2) Tener un Lugar (List<Grupo> grupos) y si tiene size > 1 es caotico
