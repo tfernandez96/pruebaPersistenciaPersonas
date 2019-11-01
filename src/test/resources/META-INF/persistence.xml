@@ -8,29 +8,19 @@
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-        <!--        Model Classes-->
-        <class>pruebas.persistencia.model.Direccion</class>
-        <class>pruebas.persistencia.model.Poder</class>
-        <class>pruebas.persistencia.model.Titulo</class>
 
-        <!--        InheritanceType = SINGLE.TABLE-->
-        <class>pruebas.persistencia.single.table.PersonaST</class>
-        <class>pruebas.persistencia.single.table.IngenieroST</class>
-        <class>pruebas.persistencia.single.table.PowerRangerST</class>
+<!--        Lugar-->
+        <class>muertos.andantes.modelo.persistencia.lugar.Lugar</class>
+        <class>muertos.andantes.modelo.persistencia.lugar.Bosque</class>
+        <class>muertos.andantes.modelo.persistencia.lugar.Granja</class>
+        <class>muertos.andantes.modelo.persistencia.lugar.Prision</class>
 
-        <!--        InheritanceType = JOINED.TABLE-->
-        <class>pruebas.persistencia.joined.table.PersonaJT</class>
-        <class>pruebas.persistencia.joined.table.IngenieroJT</class>
-        <class>pruebas.persistencia.joined.table.PowerRangerJT</class>
-
-        <!--        InheritanceType = TABLE.PER.CLASS-->
-        <class>pruebas.persistencia.table.per.classs.PersonaTPC</class>
-        <class>pruebas.persistencia.table.per.classs.IngenieroTPC</class>
-        <class>pruebas.persistencia.table.per.classs.PowerRangerTPC</class>
-
-        <!--        MappedSuperClass-->
-        <class>pruebas.persistencia.mapped.superclass.IngenieroMSC</class>
-        <class>pruebas.persistencia.mapped.superclass.PowerRangerMSC</class>
+        <class>muertos.andantes.modelo.persistencia.Sobreviviente</class>
+        <class>muertos.andantes.modelo.persistencia.Grupo</class>
+        <class>muertos.andantes.modelo.persistencia.Predador</class>
+        <class>muertos.andantes.modelo.persistencia.Caminante</class>
+        <class>muertos.andantes.modelo.persistencia.Arma</class>
+        <class>muertos.andantes.modelo.persistencia.ArmaEspecial</class>
 
         <properties>
             <property name="hibernate.archive.autodetection" value="class"/>
@@ -39,12 +29,12 @@
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/Prueba?serverTimeZone=UTC"/>
             <property name="hibernate.connection.username" value="user"/>
             <property name="hibernate.connection.password" value="password"/>
-
-            <!--                        <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>-->
-            <!--                        <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:app-db"/>-->
-            <!--                        <property name="hibernate.connection.username" value="sa"/>-->
-            <!--                        <property name="hibernate.connection.password" value=""/>-->
-            <!--                        <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>-->
+<!---->
+<!--                                    <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>-->
+<!--                                    <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:app-db"/>-->
+<!--                                    <property name="hibernate.connection.username" value="sa"/>-->
+<!--                                    <property name="hibernate.connection.password" value=""/>-->
+<!--                                    <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>-->
 
 
             <property name="hibernate.show_sql" value="true"/>
